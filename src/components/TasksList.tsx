@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { CheckCircle, Circle, Trash, ListChecks } from 'phosphor-react'
+import { CheckCircle, Circle, Trash, ListChecks, HandsClapping } from 'phosphor-react'
 
 import { useTasks } from '../hooks/useTasks'
 
@@ -11,7 +11,8 @@ export function TasksList () {
     tasks,
     toggleTaskCompletion,
     removeTask,
-    geCompletedTasksCount
+    geCompletedTasksCount,
+    clearCompletedTasks
   } = useTasks()
 
   let completedTasksCount = geCompletedTasksCount()
@@ -27,6 +28,10 @@ export function TasksList () {
 
   function handleRemoveTask (id: string) {
     removeTask(id)
+  }
+
+  function handleClearCompletedTasks () {
+    clearCompletedTasks()
   }
 
   function List () {
@@ -101,6 +106,17 @@ export function TasksList () {
       </header>
 
       {tasksCount > 0 ? <List /> : <EmptyList />}
+
+      {completedTasksCount > 0
+        ? (
+          <div className={styles.clearCompletedTasks}>
+            <button onClick={handleClearCompletedTasks}>
+              Clear {completedTasksCount} completed tasks <HandsClapping size={24} />
+            </button>
+          </div>
+          )
+        : null
+      }
 
     </div>
   )

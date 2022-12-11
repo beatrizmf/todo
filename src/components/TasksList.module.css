@@ -93,3 +93,29 @@
 .emptyList p + p {
   font-weight: normal;
 }
+
+.clearCompletedTasks {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.clearCompletedTasks button {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--gray-100);
+
+  transition: background-color 0.1s;
+}
+
+.clearCompletedTasks button:hover {
+  background: var(--purple);
+}
+
+.clearCompletedTasks button svg {
+  margin-left: 0.5rem;
+}

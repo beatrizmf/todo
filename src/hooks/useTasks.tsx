@@ -12,6 +12,7 @@ interface TasksContextData {
   toggleTaskCompletion: (id: string) => void
   removeTask: (id: string) => void
   geCompletedTasksCount: () => number
+  clearCompletedTasks: () => void
 }
 
 const emptyTaskContextData = {} as TasksContextData
@@ -68,6 +69,12 @@ export function TasksProvider ({ children }: any) {
     return tasks.filter((task) => task.isCompleted).length
   }
 
+  function clearCompletedTasks () {
+    const updatedTasks = tasks.filter((task) => !task.isCompleted)
+
+    setTasks(updatedTasks)
+  }
+
   return (
     <TasksContext.Provider
       value={{
@@ -75,7 +82,8 @@ export function TasksProvider ({ children }: any) {
         createTask,
         toggleTaskCompletion,
         removeTask,
-        geCompletedTasksCount
+        geCompletedTasksCount,
+        clearCompletedTasks
       }}
     >
       {children}
