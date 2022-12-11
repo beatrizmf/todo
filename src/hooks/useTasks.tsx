@@ -21,20 +21,20 @@ export function TasksProvider ({ children }: any) {
   const [tasks, setTasks] = useState<Task[]>([])
 
   useEffect(() => {
-    const tasks = localStorage.getItem('@todo-app:tasks') ?? ''
+    const localTasks = localStorage.getItem('@todo-app:tasks') ?? ''
 
-    if (tasks.length > 0) {
-      setTasks(JSON.parse(tasks))
+    if (localTasks.length > 0) {
+      setTasks(JSON.parse(localTasks))
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('@todo-app:tasks', JSON.stringify(tasks))
   }, [tasks])
 
   function createTask (title: string) {
     const task = {
-      id: Math.random().toString(36).substr(2, 9),
+      id: Math.random().toString(8),
       title,
       isCompleted: false
     }
