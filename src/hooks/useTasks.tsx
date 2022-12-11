@@ -13,11 +13,11 @@ interface TasksContextData {
   removeTask: (id: string) => void
 }
 
-const initialTaskContextData = {} as TasksContextData
+const emptyTaskContextData = {} as TasksContextData
 
-const TasksContext = createContext<TasksContextData>(initialTaskContextData)
+const TasksContext = createContext<TasksContextData>(emptyTaskContextData)
 
-export function TasksProvider ({ children }) {
+export function TasksProvider ({ children }: any) {
   const [tasks, setTasks] = useState<Task[]>([])
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function TasksProvider ({ children }) {
 export function useTasks (): TasksContextData {
   const context = useContext(TasksContext)
 
-  if (!context) {
+  if (context === emptyTaskContextData) {
     throw new Error('useTasks must be used within a TasksProvider')
   }
 
