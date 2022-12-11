@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import { CheckCircle, Circle, Trash } from 'phosphor-react'
 
 import { useTasks } from '../hooks/useTasks'
@@ -5,7 +7,15 @@ import { useTasks } from '../hooks/useTasks'
 import styles from './TasksList.module.css'
 
 export function TasksList () {
-  const { tasks, toggleTaskCompletion, removeTask } = useTasks()
+  const { tasks, toggleTaskCompletion, removeTask, geCompletedTasksCount } =
+    useTasks()
+
+  let completedTasksCount = geCompletedTasksCount()
+  const tasksCount = tasks.length
+
+  useEffect(() => {
+    completedTasksCount = geCompletedTasksCount()
+  }, [tasks])
 
   function handleToggleTaskCompletion (id: string) {
     toggleTaskCompletion(id)
@@ -19,27 +29,39 @@ export function TasksList () {
     <div className={styles.tasksList}>
       <header>
         <p>
-          Tasks created <span>5</span>
+          Tasks created <span>{tasksCount}</span>
         </p>
 
-        <p>
-          Completed <span>2 of 5</span>
-        </p>
+        {tasksCount > 0
+          ? (
+            <p>
+              Completed{' '}
+              <span>
+                {completedTasksCount} of {tasksCount}
+              </span>
+            </p>
+            )
+          : null
+        }
       </header>
 
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
             {task.isCompleted
-              ? (<CheckCircle
+              ? (
+                <CheckCircle
                   onClick={() => handleToggleTaskCompletion(task.id)}
                   weight="duotone"
                   className={styles.taskCompleted}
-                  size={24} />)
-              : (<Circle
+                  size={24}
+                />)
+              : (
+                <Circle
                   onClick={() => handleToggleTaskCompletion(task.id)}
                   className={styles.taskNotCompleted}
-                  size={24}/>)
+                  size={24}
+                />)
             }
 
             {task.isCompleted
