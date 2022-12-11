@@ -72,3 +72,24 @@
 .titleNotTaskCompleted {
   color: var(--gray-100);
 }
+
+.emptyList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1.5rem;
+  font-weight: bold;
+  color: var(--gray-300);
+}
+
+.emptyList svg {
+  margin-bottom: 1rem;
+}
+
+.emptyList p {
+  text-align: center;
+}
+
+.emptyList p + p {
+  font-weight: normal;
+}

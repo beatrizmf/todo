@@ -36,7 +36,11 @@ export function CreateTask () {
         placeholder="Add a new task"
         type="text"
       />
-      <button type="submit">
+      <button
+        title="Add a new task"
+        disabled={newTask.trim() === ''}
+        type="submit"
+      >
         Add <PlusCircle weight="bold" size={16} />
       </button>
     </form>

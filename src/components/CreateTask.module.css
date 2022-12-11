@@ -24,7 +24,6 @@
   align-items: center;
   padding: 1rem;
   height: 3.25rem;
-  cursor: pointer;
   border-radius: 8px;
   border: 0;
   background: var(--blue-dark);
@@ -36,11 +35,6 @@
 
 .createTask button:not(:disabled):hover {
   background: var(--blue);
-}
-
-.createTask button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
 }
 
 .createTask button svg {
