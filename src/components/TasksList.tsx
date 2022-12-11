@@ -1,41 +1,20 @@
 import { CheckCircle, Circle, Trash } from 'phosphor-react'
 
+import { useTasks } from '../hooks/useTasks'
+
 import styles from './TasksList.module.css'
 
-const tasks = [
-  {
-    id: 1,
-    title:
-      'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    isCompleted: true
-  },
-  {
-    id: 2,
-    title:
-      'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    isCompleted: false
-  },
-  {
-    id: 3,
-    title:
-      'lorem ipsum dolor',
-    isCompleted: true
-  },
-  {
-    id: 4,
-    title:
-      'lorem ipsum dolor sit amet consectetur adipisicing elit. Quisqquod.',
-    isCompleted: false
-  },
-  {
-    id: 5,
-    title:
-      'lorem ipsum dolipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    isCompleted: false
-  }
-]
-
 export function TasksList () {
+  const { tasks, toggleTaskCompletion, removeTask } = useTasks()
+
+  function handleToggleTaskCompletion (id: string) {
+    toggleTaskCompletion(id)
+  }
+
+  function handleRemoveTask (id: string) {
+    removeTask(id)
+  }
+
   return (
     <div className={styles.tasksList}>
       <header>
@@ -52,8 +31,15 @@ export function TasksList () {
         {tasks.map((task) => (
           <li key={task.id}>
             {task.isCompleted
-              ? (<CheckCircle weight="duotone" className={styles.taskCompleted} size={24} />)
-              : (<Circle className={styles.taskNotCompleted} size={24} />)
+              ? (<CheckCircle
+                  onClick={() => handleToggleTaskCompletion(task.id)}
+                  weight="duotone"
+                  className={styles.taskCompleted}
+                  size={24} />)
+              : (<Circle
+                  onClick={() => handleToggleTaskCompletion(task.id)}
+                  className={styles.taskNotCompleted}
+                  size={24}/>)
             }
 
             {task.isCompleted
@@ -62,7 +48,7 @@ export function TasksList () {
             }
 
             <button className={styles.deleteTaskButton}>
-              <Trash size={16} />
+              <Trash size={16} onClick={() => handleRemoveTask(task.id)} />
             </button>
           </li>
         ))}
