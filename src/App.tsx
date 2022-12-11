@@ -2,12 +2,18 @@ import { CreateTask } from './components/CreateTask'
 import { Header } from './components/Header'
 import './global.css'
 
+import styles from './App.module.css'
+
 function App () {
   return (
-    <>
+    <div>
       <Header />
-      <CreateTask />
-    </>
+      <div className={styles.wrapper}>
+        <div className={styles.limitedWidth}>
+          <CreateTask />
+        </div>
+      </div>
+    </div>
   )
 }
 

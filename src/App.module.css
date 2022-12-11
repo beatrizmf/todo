@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 0.5rem;
+  margin-top: -1.688rem; /* 27px - half of CreateTask height */
+}
+
+.limitedWidth {
+  width: 100%;
+  max-width: 46rem;
+}
