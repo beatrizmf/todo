@@ -7,7 +7,7 @@ export function CreateTask () {
     <form className={styles.createTask}>
       <input required placeholder="Add a new task" type="text" />
       <button type="submit">
-        Add <PlusCircle weight="bold" size="1rem" />
+        Add <PlusCircle weight="bold" size={16} />
       </button>
     </form>
   )

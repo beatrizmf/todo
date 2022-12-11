@@ -1,0 +1,74 @@
+.tasksList {
+  margin-top: 4rem;
+}
+
+.tasksList header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.tasksList header p {
+  color: var(--blue);
+  margin-left: 0.5rem;
+}
+
+.tasksList header p + p {
+  color: var(--purple);
+}
+
+.tasksList header span {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  color: var(--gray-200);
+  background: var(--gray-400);
+}
+
+.tasksList ul {
+  list-style: none;
+}
+
+.tasksList ul li {
+  background: var(--gray-500);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tasksList ul li + li {
+  margin-top: 0.75rem;
+}
+
+.deleteTaskButton {
+  border: 0;
+  background: none;
+  color: var(--gray-300);
+}
+
+.taskCompleted {
+  color: var(--purple);
+}
+
+.taskNotCompleted {
+  color: var(--blue);
+}
+
+.titleTaskCompleted,
+.titleNotTaskCompleted {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.titleTaskCompleted {
+  color: var(--gray-300);
+  text-decoration-line: line-through;
+}
+
+.titleNotTaskCompleted {
+  color: var(--gray-100);
+}
